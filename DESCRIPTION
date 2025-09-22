@@ -1,19 +1,14 @@
 Package: comphy
-Type: Package
-Title: Functions used with the book "Computational Physics with R"
-Version: 0.1.0
-Date: 2021-05-01
-Author: James Foadi
-Maintainer: James Foadi <james_foadi@yahoo.co.uk>
-Description: Collection of all functions described and used in 
-             the book "Computational Physics with R".
-License: GPL-2
+Title: Functions Used in the Book "Computational Physics with R"
+Version: 1.0.0
+Authors@R: 
+    person("James", "Foadi", email = "james_foadi@yahoo.co.uk", 
+           role = c("aut", "cre"))
+Description: Provides a collection of functions described and used in the book 
+    "Computational Physics with R". These include routines for numerical 
+    differentiation, integration, differential equations, eigenvalue problems, 
+    Monte Carlo methods, and other algorithms relevant to computational physics.
+License: GPL (>= 2)
 Encoding: UTF-8
 Depends: R (>= 3.6.0)
-LazyData: true
 RoxygenNote: 7.3.2
-Suggests: 
-    knitr,
-    rmarkdown,
-    markdown,
-    ggplot2

@@ -1,0 +1,19 @@
+Package: comphy
+Type: Package
+Title: Functions used with the book "Computational Physics with R"
+Version: 0.1.0
+Date: 2021-05-01
+Author: James Foadi
+Maintainer: James Foadi <james_foadi@yahoo.co.uk>
+Description: Collection of all functions described and used in 
+             the book "Computational Physics with R".
+License: GPL-2
+Encoding: UTF-8
+Depends: R (>= 3.6.0)
+LazyData: true
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown,
+    markdown,
+    ggplot2

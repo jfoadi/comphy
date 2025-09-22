@@ -1,0 +1,42 @@
+# R session files
+.Rhistory
+.RData
+.Ruserdata
+
+# RStudio project files
+.Rproj.user/
+*.Rproj
+
+# Build/check output
+*.tar.gz
+*.Rcheck/
+
+# Compiled code
+*.o
+*.so
+*.dll
+
+# macOS / Windows system files
+.DS_Store
+Thumbs.db
+
+# Documentation generated during build
+inst/doc/
+
+# Vignette and knitr outputs
+vignettes/*.html
+vignettes/*.pdf
+vignettes/*_cache/
+vignettes/*_files/
+
+# General knitr/bookdown caches
+*_cache/
+*.utf8.md
+*.knit.md
+
+# IDE / editor folders
+.vscode/
+.idea/
+
+# Temporary swap files
+*.swp

@@ -1,3 +1,7 @@
+# comphy 1.0.3
+
+* Changed version in DESCRIPTION
+
 # comphy 1.0.2
 
 * Changed a minor (wrong) sentence in README.

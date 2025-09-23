@@ -137,11 +137,11 @@ solveLS <- function(x,intercept=TRUE,tol=NULL) {
 #' with \eqn{2} columns, containing the coordinates of each data
 #' point, and \eqn{n} rows. The least squares procedure is carried 
 #' out as solution of a matrix equation, via the 
-#' \code{\link[base]{solveLS}} function.
+#' \code{\link{solveLS}} function.
 #' 
-#' @param x A \eqn{n \times 2} matrix or data frame where each row
-#'          contains the coordinates of a data point used for
-#'          regression.
+#' @param pts A \eqn{n \times 2} matrix or data frame where each row
+#'            contains the coordinates of a data point used for
+#'            regression.
 #' @param m An integer. The degree of the polynomial to be used as
 #'          model for the regression.
 #' @param tol A real number. The solution of a linear system can be
@@ -185,7 +185,7 @@ solveLS <- function(x,intercept=TRUE,tol=NULL) {
 #' print(ltmp$SSE)
 #' 
 #' @export
-polysolveLS <- function(pts,m,intercept=TRUE,tol=NULL) {
+polysolveLS <- function(pts,m,tol=NULL) {
   # Check input
   ans <- (is.matrix(pts) | is.data.frame(pts))
   if (!ans) {

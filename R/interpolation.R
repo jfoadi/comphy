@@ -397,7 +397,7 @@ decidepoly_n <- function(x,f,thr=1e-06,ntrial=30) {
   
   # Irregular grid for measuring errors (two times 
   # the tabulated points)
-  x0 <- runif(n=2*n,min=x[1],max=x[n])
+  x0 <- stats::runif(n=2*n,min=x[1],max=x[n])
   x0 <- sort(x0)
   
   # Try this incremental scheme a few times

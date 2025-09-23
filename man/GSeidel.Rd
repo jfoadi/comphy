@@ -60,7 +60,7 @@ print(x)
 
 # Start from a different point
 x0 <- c(-1,2,8)
-x <- Gseidel(A,b,x0)
+x <- GSeidel(A,b,x0)
 print(x)
 
 }

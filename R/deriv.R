@@ -89,7 +89,7 @@ deriv_irr <- function(x0,x,f) {
 #' of the function, corresponding to a regular grid.
 #' @return An upper triangular matrix with \eqn{n+1} rows and
 #' \eqn{n+1} columns. The first column includes the tabulated 
-#' values of the function. The second column includes the eqn{n}
+#' values of the function. The second column includes the \eqn{n}
 #' forward differences of first order and a zero. The third
 #' column includes the \eqn{n-1} forward differences of second
 #' order and two zeros. And so on.
@@ -142,7 +142,7 @@ forwdif <- function(f) {
 #' @return A lower triangular matrix with \eqn{n+1} rows and
 #' \eqn{n+1} columns. The first column includes the tabulated 
 #' values of the function. The second column includes a zero
-#' and the eqn{n} backward differences of first order. The third
+#' and the \eqn{n} backward differences of first order. The third
 #' column includes two zeros and the \eqn{n-1} forward 
 #' differences of second order. And so on.
 #'
@@ -196,9 +196,9 @@ backdif <- function(f) {
 #'
 #'
 #' @examples
-#' x <- seq(0, 1, length.out = 7)
+#' x <- seq(0, 1, length.out = 11)
 #' f <- x^3 + x^2 - x - 1
-#' x0 <- c(0.25, 0.5, 0.75)
+#' x0 <- c(0.2, 0.5, 0.8)
 #' deriv_reg(x0, x, f)
 #'
 #' @export
@@ -271,7 +271,7 @@ aprod <- function(vdiff,i) {
   m <- i-1
   
   # Combinations without repetitions
-  M <- combn(1:m,i-2)
+  M <- utils::combn(1:m,i-2)
   
   # Sum
   innT <- 0

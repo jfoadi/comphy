@@ -876,7 +876,7 @@ PJacobi <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
 #' 
 #' # Start from a different point
 #' x0 <- c(-1,2,8)
-#' x <- Gseidel(A,b,x0)
+#' x <- GSeidel(A,b,x0)
 #' print(x)
 #' 
 #' @export
@@ -1120,8 +1120,8 @@ illcond_sample <- function(A,
   normDx <- 0
   if (!is.null(iseed)) set.seed(iseed)
   for (i in 1:ncyc) {
-    b <- matrix(runif(n,min=0,max=bmax),ncol=1)
-    Db <- matrix(runif(n,min=0,max=Dbmax),ncol=1)
+    b <- matrix(stats::runif(n,min=0,max=bmax),ncol=1)
+    Db <- matrix(stats::runif(n,min=0,max=Dbmax),ncol=1)
     x <- solve(A,b)
     Dx <- solve(A,Db)
     if (norm(x,"F") < normx) {

@@ -1,3 +1,8 @@
+# comphy 1.0.1
+
+* Prepared the package for submission to CRAN.
+* Minor internal updates and checks to ensure CRAN compliance.
+
 # comphy 1.0.0
 
 * First stable release of **comphy**.

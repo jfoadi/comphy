@@ -14,7 +14,7 @@ of the function, corresponding to a regular grid.}
 A lower triangular matrix with \eqn{n+1} rows and
 \eqn{n+1} columns. The first column includes the tabulated 
 values of the function. The second column includes a zero
-and the eqn{n} backward differences of first order. The third
+and the \eqn{n} backward differences of first order. The third
 column includes two zeros and the \eqn{n-1} forward 
 differences of second order. And so on.
 }

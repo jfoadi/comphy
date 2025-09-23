@@ -13,7 +13,7 @@ of the function, corresponding to a regular grid.}
 \value{
 An upper triangular matrix with \eqn{n+1} rows and
 \eqn{n+1} columns. The first column includes the tabulated 
-values of the function. The second column includes the eqn{n}
+values of the function. The second column includes the \eqn{n}
 forward differences of first order and a zero. The third
 column includes the \eqn{n-1} forward differences of second
 order and two zeros. And so on.

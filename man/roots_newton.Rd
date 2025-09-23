@@ -21,15 +21,15 @@ roots_newton(
 these will have to be passed as additional variables, using the
 same names in the function's definition (see examples).}
 
-\item{f1}{A function equal to the first derivative of f0. Parameters that
-are potentially included in f0, must be also included in f1.}
+\item{f1}{A function equal to the first derivative of `f0`. Parameters that
+are potentially included in `f0`, must be also included in `f1`.}
 
 \item{x0}{A numeric variable. The initial guess starting Newton's algorithm.}
 
 \item{tol}{A real small number. The smallest difference
 between the new zero's approximation and the previous one, above 
 which the algorithm keeps working. As soon as the difference is 
-less than tol, the algorithm stops and the current approximation
+less than `tol`, the algorithm stops and the current approximation
 is returned as the final approximation to the function's root.
 Default value is 1e-9.}
 
@@ -39,17 +39,19 @@ normally obtained with a number of iterations much smaller than
 imax. imax is important to stop search in those cases in which 
 the algorithm gets stuck in endless loops (non-convergence).}
 
-\item{ftol}{A real small number. When ftol is not NULL (default value),
+\item{ftol}{A real small number. When `ftol` is not NULL (default value),
 Newton's algorithm stops when \eqn{|f(x)| < ftol}. This
 parameter essentially introduces a different stopping criterion.}
 
 \item{message}{A logical variable to state whether messages about the 
 root and the error have to be printed. The default
-is for the messages to be printed (message=TRUE).}
+is for the messages to be printed (`message=TRUE`).}
 
 \item{logg}{A logical variable to state whether information on the series
 of approximating roots is printed (TRUE) or not (FALSE). Default
 is for such information not to be printed (FALSE).}
+
+\item{...}{Parameters passed to the two functions `f0` and `f1`, if any.}
 }
 \value{
 A numeric value, the zero of the function (or, equivalently, the

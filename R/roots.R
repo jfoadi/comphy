@@ -28,18 +28,18 @@
 #'           same names in the function's definition (see examples).
 #' @param x0 A numeric variable. The starting value to find the initial
 #'           interval, when a search interval is not provided. The default
-#'           value is x0=0.
+#'           value is `x0=0`.
 #' @param lB A numeric variable indicating the lower (left) extreme of 
 #'           the search interval. If not given, this number will be selected
-#'           starting from x0 and in small steps eps of values
-#'           smaller than x0, until a value of lB is found for
-#'           which the function f has sign opposite of the sign it
-#'           has at rB. Default is for lB not to be entered (lB=NULL).
-#' @param rB Same as lB, but corresponding to the upper (right) extreme of
-#'           the search interval. Default is for rB not to be entered 
-#'           (rB=NULL).
+#'           starting from `x0` and in small steps `eps` of values
+#'           smaller than `x0`, until a value of `lB` is found for
+#'           which the function `f` has sign opposite of the sign it
+#'           has at `rB`. Default is for `lB` not to be entered (`lB=NULL`).
+#' @param rB Same as `lB`, but corresponding to the upper (right) extreme of
+#'           the search interval. Default is for `rB` not to be entered 
+#'           (`rB=NULL`).
 #' @param tol A real number, in general a small number. The width of the
-#'            smallest interva containing the zero of the function just
+#'            smallest interval containing the zero of the function just
 #'            before the algorithm stops. This means that the largest error
 #'            \eqn{|x-x_t|} between the numerical value of the root found, 
 #'            \eqn{x}, and its correct value, \eqn{x_t}, is tol. Default
@@ -47,17 +47,17 @@
 #' @param imax A positive integer. The maximum number of bisections of the
 #'             interval, while searching the zero of the function. The
 #'             default value is 1e6, although convergence is normally 
-#'             obtained with a number of bisections much smaller than imax.
-#'             imax is important to stop search in those cases in which the
+#'             obtained with a number of bisections much smaller than `imax`.
+#'             `imax` is important to stop search in those cases in which the
 #'             function has no zeros in the search interval provided.
 #' @param eps A real number. The step size needed for the selection of a
 #'            search interval, when this is not provided. In such a 
 #'            situation, symmetric intervals with increasing width around
-#'            x0 are considered where the left and right extremes are 
-#'            x0-i*eps and x0+i*eps, respectively, where i is a positive
+#'            `x0` are considered where the left and right extremes are 
+#'            `x0-i*eps` and `x0+i*eps`, respectively, where `i` is a positive
 #'            integer, progressively increasing from 1 to the maximum
-#'            allowed value imax. Search for the selected interval stops
-#'            when is the signs of the function f calculated at the extremes 
+#'            allowed value `imax`. Search for the selected interval stops
+#'            when is the signs of the function `f` calculated at the extremes 
 #'            are opposite. If the search interval is not found, a warning
 #'            message is printed and NULL is returned. Default value is
 #'            0.1.
@@ -67,6 +67,8 @@
 #' @param logg A logical variable to state whether information on the series
 #'             of bisected intervals is printed (TRUE) or not (FALSE). Default
 #'             is for such information not to be printed (FALSE).
+#' @param ... Parameters passed to function `fn`, if needed.
+#' 
 #' @return A numeric value, the zero of the function (or, equivalently, the
 #'         root of the equation \eqn{f(x)=0}).
 #'         
@@ -236,16 +238,16 @@ roots_bisec <- function(fn,x0=0,lB=NULL,rB=NULL,
 #' @param f0 A function of one variable. If the function includes variables,
 #'           these will have to be passed as additional variables, using the
 #'           same names in the function's definition (see examples).
-#' @param f1 A function equal to the first derivative of f0. Parameters that
-#'           are potentially included in f0, must be also included in f1.
+#' @param f1 A function equal to the first derivative of `f0`. Parameters that
+#'           are potentially included in `f0`, must be also included in `f1`.
 #' @param x0 A numeric variable. The initial guess starting Newton's algorithm.
 #' @param tol A real small number. The smallest difference
 #'            between the new zero's approximation and the previous one, above 
 #'            which the algorithm keeps working. As soon as the difference is 
-#'            less than tol, the algorithm stops and the current approximation
+#'            less than `tol`, the algorithm stops and the current approximation
 #'            is returned as the final approximation to the function's root.
 #'            Default value is 1e-9.
-#' @param ftol A real small number. When ftol is not NULL (default value),
+#' @param ftol A real small number. When `ftol` is not NULL (default value),
 #'             Newton's algorithm stops when \eqn{|f(x)| < ftol}. This
 #'             parameter essentially introduces a different stopping criterion.
 #' @param imax A positive integer. The maximum number of iterations of the
@@ -255,10 +257,12 @@ roots_bisec <- function(fn,x0=0,lB=NULL,rB=NULL,
 #'             the algorithm gets stuck in endless loops (non-convergence).
 #' @param message A logical variable to state whether messages about the 
 #'                root and the error have to be printed. The default
-#'                is for the messages to be printed (message=TRUE).
+#'                is for the messages to be printed (`message=TRUE`).
 #' @param logg A logical variable to state whether information on the series
 #'             of approximating roots is printed (TRUE) or not (FALSE). Default
 #'             is for such information not to be printed (FALSE).
+#' @param ... Parameters passed to the two functions `f0` and `f1`, if any.
+#' 
 #' @return A numeric value, the zero of the function (or, equivalently, the
 #'         root of the equation \eqn{f(x)=0}).
 #'         
@@ -301,14 +305,14 @@ roots_newton <- function(f0,f1,x0=0,tol=1e-9,imax=1e6,ftol=NULL,
   }
   ans <- is.function(f1)
   if (!ans) {
-    msg <- paste0("Argument 'f1' has to be a function, the derivative of f0.\n")
+    msg <- paste0("Argument 'f1' must be a function, the derivative of f0.\n")
     warning(msg)
     
     return(NULL)
   }
   
   # If x0 yields f0(x0)=0 stop (arbitrary number, very small)
-  if (abs(f0(x0)) < 1e-15) {
+  if (abs(f0(x0,...)) < 1e-15) {
     xr <- x0
     if (message) {
       msg <- sprintf("The root is %f. The error is less than 1e-15.\n",xr)
@@ -320,7 +324,7 @@ roots_newton <- function(f0,f1,x0=0,tol=1e-9,imax=1e6,ftol=NULL,
   
   # If first derivative is close to zero (or zero!),
   # stop and ask to use a different initial guess
-  if (abs(f1(x0)) <= 1e-15) {
+  if (abs(f1(x0,...)) <= 1e-15) {
     msg <- sprintf("The initial guess, x0, is not suitable to start\n")
     msg <- paste0(msg,sprintf("  the algorithm as the first derivative is zero.\n"))
     warning(msg)
@@ -336,7 +340,7 @@ roots_newton <- function(f0,f1,x0=0,tol=1e-9,imax=1e6,ftol=NULL,
   
   # Stopping criterion depends on
   # whether ftol is used or not
-  x1 <- x0 - f0(x0)/f1(x0)
+  x1 <- x0 - f0(x0,...)/f1(x0,...)
   ncyc <- 1
   if (is.null(ftol)) {
     while (abs(x1-x0) >= tol & ncyc <= imax) {
@@ -345,30 +349,30 @@ roots_newton <- function(f0,f1,x0=0,tol=1e-9,imax=1e6,ftol=NULL,
         ltol <- c(ltol,abs(x0-x1))
       }
       x0 <- x1
-      if (abs(f1(x0)) < 1e-15) {
+      if (abs(f1(x0,...)) < 1e-15) {
         msg <- "The algorithm does not converge with this choice\n"
         msg <- paste0(msg,"of initial guess.\n")
         stop(msg)
       }
-      x1 <- x0 - f0(x0)/f1(x0)
+      x1 <- x0 - f0(x0,...)/f1(x0,...)
       ncyc <- ncyc+1
     }
   } else {
-    while (abs(f0(x0)-f0(x1)) >= ftol & ncyc <= imax) {
+    while (abs(f0(x0,...)-f0(x1,...)) >= ftol & ncyc <= imax) {
       if (logg) {
         lxr <- c(lxr,x1)
         ltol <- c(ltol,abs(x0-x1))
       }
       x0 <- x1
       if (logg) lxr <- c(lxr,x0)
-      if (abs(f1(x0)) < 1e-15) {
+      if (abs(f1(x0,...)) < 1e-15) {
         msg <- "Algorithm diverges.\n"
         msg <- paste0(msg,sprintf("Current guess of root is %\f.\n",x0))
         warning(msg)
         
         return(x0)
       }
-      x1 <- x0 - f0(x0)/f1(x0)
+      x1 <- x0 - f0(x0,...)/f1(x0,...)
       ncyc <- ncyc+1
     }  
   }
@@ -444,6 +448,8 @@ roots_newton <- function(f0,f1,x0=0,tol=1e-9,imax=1e6,ftol=NULL,
 #' @param logg A logical variable to state whether information on the series
 #'             of approximating roots is printed (TRUE) or not (FALSE). Default
 #'             is for such information not to be printed (FALSE).
+#' @param ... Parameters passed to function `fn`, if needed.
+#' 
 #' @return A numeric value, the zero of the function (or, equivalently, the
 #'         root of the equation \eqn{f(x)=0}).
 #'         
@@ -493,7 +499,7 @@ roots_secant <- function(fn,x0,x1,imax=1e6,ftol=1e-09,
   }
   
   # Swap x0 with x1 if required
-  if (abs(fn(x0)) < abs(fn(x1))) {
+  if (abs(fn(x0,...)) < abs(fn(x1,...))) {
     tmp <- x0
     x0 <- x1
     x1 <- tmp
@@ -510,9 +516,9 @@ roots_secant <- function(fn,x0,x1,imax=1e6,ftol=1e-09,
   
   # Main loop
   ncyc <- 1
-  while(abs(fn(x1)) >= ftol & ncyc <= imax) {
+  while(abs(fn(x1,...)) >= ftol & ncyc <= imax) {
     # Stop if secant is horizontal
-    if (abs(fn(x0)-fn(x1)) < 1e-15) {
+    if (abs(fn(x0,...)-fn(x1,...)) < 1e-15) {
       # Adjust series of x0,x1 in a data frame
       if (logg) {
         llg <- data.frame(x0=lx0,x1=lx1)
@@ -524,7 +530,7 @@ roots_secant <- function(fn,x0,x1,imax=1e6,ftol=1e-09,
       
       return(NULL)
     }
-    x2 <- x1-fn(x1)*(x0-x1)/(fn(x0)-fn(x1))
+    x2 <- x1-fn(x1,...)*(x0-x1)/(fn(x0,...)-fn(x1,...))
     x0 <- x1
     x1 <- x2
     xr <- x1

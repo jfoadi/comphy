@@ -405,7 +405,7 @@ BVPshoot2 <- function(f,t0,tf,y0,yf,h,s_guess=1,tol=1e-9,...) {
   shootF <- function(s) {
     y_init <- c(y0,s)
     sol <- RK4ODE(system,t0,tf,y_init,h)
-    return(tail(sol$y[,1],1)-yf)
+    return(utils::tail(sol$y[,1],1)-yf)
   }
   
   # Determine root-finding mode based on length of s_guess
@@ -520,8 +520,8 @@ BVPlinshoot2 <- function(f,t0,tf,y0,yf,h,...) {
   dv <- sol_v$y[,2]
   
   # Check v(b) neq 0
-  utf <- tail(u,1)
-  vtf <- tail(v,1)
+  utf <- utils::tail(u,1)
+  vtf <- utils::tail(v,1)
   if (abs(vtf) < 1e-12) 
     stop("Homogeneous solution vanishes at tf: cannot divide.")
   

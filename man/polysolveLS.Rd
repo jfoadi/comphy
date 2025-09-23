@@ -4,9 +4,13 @@
 \alias{polysolveLS}
 \title{Polynomial Least Squares}
 \usage{
-polysolveLS(pts, m, intercept = TRUE, tol = NULL)
+polysolveLS(pts, m, tol = NULL)
 }
 \arguments{
+\item{pts}{A \eqn{n \times 2} matrix or data frame where each row
+contains the coordinates of a data point used for
+regression.}
+
 \item{m}{An integer. The degree of the polynomial to be used as
 model for the regression.}
 
@@ -23,10 +27,6 @@ notwithstanding ill-conditioning, and the user can
 force the calculation of a solution using a value of
 \code{tol} smaller than 1e-17. Default is \code{NULL},
 corresponding to a \code{tol=1e-17}.}
-
-\item{x}{A \eqn{n \times 2} matrix or data frame where each row
-contains the coordinates of a data point used for
-regression.}
 }
 \value{
 A named list with two elements:
@@ -54,7 +54,7 @@ The \eqn{n} data points are contained in a matrix or data frame
 with \eqn{2} columns, containing the coordinates of each data
 point, and \eqn{n} rows. The least squares procedure is carried 
 out as solution of a matrix equation, via the 
-\code{\link[base]{solveLS}} function.
+\code{\link{solveLS}} function.
 }
 \examples{
 # 21 points close to the quadratic x^2 - 5*x + 6

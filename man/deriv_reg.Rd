@@ -29,9 +29,9 @@ the derivative cannot be calculated at the first or last grid point. For
 centred difference it cannot be calculated at both first and last grid point.
 }
 \examples{
-x <- seq(0, 1, length.out = 7)
+x <- seq(0, 1, length.out = 11)
 f <- x^3 + x^2 - x - 1
-x0 <- c(0.25, 0.5, 0.75)
+x0 <- c(0.2, 0.5, 0.8)
 deriv_reg(x0, x, f)
 
 }

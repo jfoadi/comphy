@@ -24,21 +24,21 @@ same names in the function's definition (see examples).}
 
 \item{x0}{A numeric variable. The starting value to find the initial
 interval, when a search interval is not provided. The default
-value is x0=0.}
+value is `x0=0`.}
 
 \item{lB}{A numeric variable indicating the lower (left) extreme of 
 the search interval. If not given, this number will be selected
-starting from x0 and in small steps eps of values
-smaller than x0, until a value of lB is found for
-which the function f has sign opposite of the sign it
-has at rB. Default is for lB not to be entered (lB=NULL).}
+starting from `x0` and in small steps `eps` of values
+smaller than `x0`, until a value of `lB` is found for
+which the function `f` has sign opposite of the sign it
+has at `rB`. Default is for `lB` not to be entered (`lB=NULL`).}
 
-\item{rB}{Same as lB, but corresponding to the upper (right) extreme of
-the search interval. Default is for rB not to be entered 
-(rB=NULL).}
+\item{rB}{Same as `lB`, but corresponding to the upper (right) extreme of
+the search interval. Default is for `rB` not to be entered 
+(`rB=NULL`).}
 
 \item{tol}{A real number, in general a small number. The width of the
-smallest interva containing the zero of the function just
+smallest interval containing the zero of the function just
 before the algorithm stops. This means that the largest error
 \eqn{|x-x_t|} between the numerical value of the root found, 
 \eqn{x}, and its correct value, \eqn{x_t}, is tol. Default
@@ -47,18 +47,18 @@ value is 1e-9.}
 \item{imax}{A positive integer. The maximum number of bisections of the
 interval, while searching the zero of the function. The
 default value is 1e6, although convergence is normally 
-obtained with a number of bisections much smaller than imax.
-imax is important to stop search in those cases in which the
+obtained with a number of bisections much smaller than `imax`.
+`imax` is important to stop search in those cases in which the
 function has no zeros in the search interval provided.}
 
 \item{eps}{A real number. The step size needed for the selection of a
 search interval, when this is not provided. In such a 
 situation, symmetric intervals with increasing width around
-x0 are considered where the left and right extremes are 
-x0-i*eps and x0+i*eps, respectively, where i is a positive
+`x0` are considered where the left and right extremes are 
+`x0-i*eps` and `x0+i*eps`, respectively, where `i` is a positive
 integer, progressively increasing from 1 to the maximum
-allowed value imax. Search for the selected interval stops
-when is the signs of the function f calculated at the extremes 
+allowed value `imax`. Search for the selected interval stops
+when is the signs of the function `f` calculated at the extremes 
 are opposite. If the search interval is not found, a warning
 message is printed and NULL is returned. Default value is
 0.1.}
@@ -70,6 +70,8 @@ is for the messages to be printed (message=TRUE).}
 \item{logg}{A logical variable to state whether information on the series
 of bisected intervals is printed (TRUE) or not (FALSE). Default
 is for such information not to be printed (FALSE).}
+
+\item{...}{Parameters passed to function `fn`, if needed.}
 }
 \value{
 A numeric value, the zero of the function (or, equivalently, the

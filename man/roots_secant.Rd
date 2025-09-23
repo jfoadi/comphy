@@ -38,6 +38,8 @@ is for the messages to be printed (message=TRUE).}
 \item{logg}{A logical variable to state whether information on the series
 of approximating roots is printed (TRUE) or not (FALSE). Default
 is for such information not to be printed (FALSE).}
+
+\item{...}{Parameters passed to function `fn`, if needed.}
 }
 \value{
 A numeric value, the zero of the function (or, equivalently, the

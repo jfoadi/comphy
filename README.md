@@ -55,7 +55,8 @@ print(df)
 #>  [7] -1.2394482 -1.3739389 -1.3739389 -1.2394482         NA
 ```
 
-The result should be close to $\cos(pi/4) = \sqrt(2)/2$.
+The two `NA`’s are there because the derivative is calculated using a
+centred difference.
 
 ## Documentation
 

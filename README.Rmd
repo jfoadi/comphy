@@ -59,7 +59,8 @@ df <- deriv_reg(x0,x,f)
 print(df)
 ```
 
-The result should be close to $\cos(pi/4) = \sqrt(2)/2$.
+The two `NA`'s are there because the derivative is calculated using a
+centred difference.
 
 ## Documentation
 All exported functions include documentation and usage examples.

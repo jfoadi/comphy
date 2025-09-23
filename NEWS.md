@@ -1,3 +1,7 @@
+# comphy 1.0.2
+
+* Changed a minor (wrong) sentence in README.
+
 # comphy 1.0.1
 
 * Prepared the package for submission to CRAN.

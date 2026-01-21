@@ -4,10 +4,10 @@
 *comphy* is an R package accompanying the book This package accompanies
 the book  
 [*Computational Physics with
-R*](https://iopscience.iop.org/book/mono/978-0-7503-2632-2). . It
-collects all the functions described and used throughout the book,
-providing ready-to-use implementations of numerical algorithms in
-computational physics.
+R*](https://iopscience.iop.org/book/mono/978-0-7503-2632-2). It collects
+all the functions described and used throughout the book, providing
+ready-to-use implementations of numerical algorithms in computational
+physics.
 
 The package includes routines for:
 

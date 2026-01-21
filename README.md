@@ -64,8 +64,9 @@ centred difference.
 ## Documentation
 
 All exported functions include documentation and usage examples. For a
-comprehensive discussion and context, see the book *Computational
-Physics with R*.
+comprehensive discussion and context, see the book [*Computational
+Physics with
+R*](https://iopscience.iop.org/book/mono/978-0-7503-2632-2).
 
 ## License
 

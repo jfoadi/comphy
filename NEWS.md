@@ -1,5 +1,7 @@
 # comphy 1.0.4
 
+* final preparation for CRAN submission
+
 # comphy 1.0.3
 
 * Changed version in DESCRIPTION

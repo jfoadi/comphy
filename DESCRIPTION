@@ -1,6 +1,6 @@
 Package: comphy
 Title: Functions Used in the Book "Computational Physics with R"
-Version: 1.0.3
+Version: 1.0.4
 Authors@R: 
     person("James", "Foadi", email = "james_foadi@yahoo.co.uk", 
            role = c("aut", "cre"))

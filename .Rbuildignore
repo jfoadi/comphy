@@ -1,5 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.Rhistory$
 ^README\.Rmd$
 ^man/figures/README-.*\.(png|svg|jpg|jpeg)$
 ^cran-comments\.md$

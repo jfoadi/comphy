@@ -13,7 +13,7 @@ data point, and the last element contain the value
 corresponding to the linear model.}
 
 \item{intercept}{A logical variable. It indicates whether to omit
-or keep the constant \eqn{a_{m+1}$} in the model.
+or keep the constant \eqn{a_{m+1}} in the model.
 The default is \code{intercept=TRUE} as removing
 the constant is not advisable, unless there is
 an absolute certainty (for example in mechanistic

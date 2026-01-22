@@ -1,5 +1,6 @@
 # comphy 1.0.4
 
+* Fix Rd math markup for solveLS manual build
 * final preparation for CRAN submission
 
 # comphy 1.0.3

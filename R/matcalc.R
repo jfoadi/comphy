@@ -50,7 +50,7 @@ n <- ncol(M)
 
 # One column more than # of rows
 if (n != (m+1)) {
-  cat("Input is not an augmented matrix.\n")
+  warning("Input is not an augmented matrix.\n")
   return(NULL)
 }
 
@@ -65,7 +65,7 @@ for (i in 1:m) {
     flag <- TRUE
   }
   if (flag) {
-    cat("This system has no solution or infinite solutions.\n")
+    message("This system has no solution or infinite solutions.\n")
     return(NULL)
   }
 }
@@ -208,7 +208,7 @@ LUdeco <- function(A,method="crout") {
   # Quit if wrong method
   if (method != "crout" & method != "doolittle") {
     msg <- "Not a recognised decomposition method.\n"
-    cat(msg)
+    warning(msg)
     
     return(NULL)
   }
@@ -311,7 +311,7 @@ LUdeco <- function(A,method="crout") {
       msg <- paste("The input matrix is singular",
                    "and it does not have\n",
                    "an LU decomposition.\n")
-      cat(msg)
+      message(msg)
       return(NULL)
     }
   }
@@ -408,7 +408,7 @@ LUdeco <- function(A,method="crout") {
       msg <- paste("The input matrix is singular",
                    "and it does not have\n",
                    "an LU decomposition.\n")
-      cat(msg)
+      message(msg)
       return(NULL)
     }
   }
@@ -467,7 +467,7 @@ solve_tridiag <- function(M) {
   
   # One column more than # of rows
   if (n != (m+1)) {
-    cat("Input is not an augmented matrix.\n")
+    warning("Input is not an augmented matrix.\n")
     return(NULL)
   }
   
@@ -479,7 +479,7 @@ solve_tridiag <- function(M) {
       flag <- TRUE
     }
     if (flag) {
-      cat("This system has no solution or infinite solutions.\n")
+      message("This system has no solution or infinite solutions.\n")
       return(NULL)
     }
   }
@@ -501,7 +501,7 @@ solve_tridiag <- function(M) {
   # the system has no solutions or infinite solutions
   idx <- which(abs(beta) < 1e-6)
   if (length(idx) > 0) {
-    cat("This system has no solution or infinite solutions.\n")
+    message("This system has no solution or infinite solutions.\n")
     return(NULL)
   }
   
@@ -540,7 +540,7 @@ condet <- function(A) {
   m <- nrow(A)
   n <- ncol(A)
   if (n != m) {
-    cat("Input is not a square matrix.\n")
+    warning("Input is not a square matrix.\n")
     return(NULL)
   }
   
@@ -731,7 +731,7 @@ PJacobi <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
   if (abs(tmp) < 1e-9) {
     msg <- paste("The determinant of this matrix is zero.\n",
                  "Abandoning solution process ...\n")
-    cat(msg)
+    warning(msg)
     return(NULL)
   }
   
@@ -745,13 +745,13 @@ PJacobi <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
   if (!ans & ddominant) {
     msg <- paste0("The matrix of coefficients is not diagonally",
                  " dominant.\nNot attempting solution.\n")
-    cat(msg)
+    warning(msg)
     return(NULL)
   }
   if (!ans & !ddominant) {
     msg <- paste("The matrix of coefficients is not diagonally",
                  "dominant.\nAttempting solution anyway...\n\n")
-    cat(msg)
+    warning(msg)
   }
   
   # Proceed
@@ -765,7 +765,7 @@ PJacobi <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
     msg <- paste0("The matrix of coefficients appears to have\n",
                  "one of the elements on the diagonal equal to\n",
                  "zero. Algorithm cannot proceed.\n")
-    cat(msg)
+    warning(msg)
     return(NULL)
   }
   
@@ -791,7 +791,7 @@ PJacobi <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
       if (max(abs(x-x0) < tol)) {
         msg <- paste0("Number of cycles needed to converge: 0\n",
                      "The starting value was the solution.\n")
-        cat(msg)
+        message(msg)
         break
       }
     }
@@ -808,16 +808,15 @@ PJacobi <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
         msg <- paste0("The increment is getting larger and larger.\n",
                      "Max value of increment at cycle ",icyc,": ",
                      Mnew,"\n")
-        cat(msg)
+        message(msg)
         return(NULL)
       }
       
       eps <- abs(Mold-Mnew)/Mold
       if (abs(eps-1) < tol) {
         msg <- paste("Number of cycles needed to converge:",icyc,"\n")
-        cat(msg)
-        msg <- paste("Last relative increment:",abs(1-eps),"\n")
-        cat(msg)
+        msg <- paste0(msg,"Last relative increment: ",abs(1-eps),"\n")
+        message(msg)
         break
       }
     }
@@ -885,7 +884,7 @@ GSeidel <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
   # Checks
   ans <- is.matrix(A)
   if (!ans) {
-    msg <- "A has to be an n X n matrix."
+    msg <- "A must be an n X n matrix."
     warning(msg)
     return(NULL)
   }
@@ -893,13 +892,13 @@ GSeidel <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
   n <- tmp[1]
   ans <- length(b) == n
   if (!ans) {
-    msg <- "b has to be a vector of length n."
+    msg <- "b must be a vector of length n."
     warning(msg)
     return(NULL)
   }
   ans <- sum(abs((b))) > tol
   if (!ans) {
-    msg <- "b has to be different from a null vector."
+    msg <- "b must be different from a null vector."
     warning(msg)
     return(NULL)
   }
@@ -908,7 +907,7 @@ GSeidel <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
   }
   ans <- length(x0) == n
   if (!ans) {
-    msg <- "x0 has to be a vector of length n."
+    msg <- "x0 must be a vector of length n."
     warning(msg)
     return(NULL)
   }
@@ -938,7 +937,7 @@ GSeidel <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
   if (abs(tmp) < 1e-9) {
     msg <- paste("The determinant of this matrix is zero.\n",
                  "Abandoning solution process ...\n")
-    cat(msg)
+    warning(msg)
     return(NULL)
   }
   
@@ -952,13 +951,13 @@ GSeidel <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
   if (!ans & ddominant) {
     msg <- paste0("The matrix of coefficients is not diagonally",
                   " dominant.\nNot attempting solution.\n")
-    cat(msg)
+    warning(msg)
     return(NULL)
   }
   if (!ans & !ddominant) {
     msg <- paste("The matrix of coefficients is not diagonally",
                  "dominant.\nAttempting solution anyway...\n\n")
-    cat(msg)
+    warning(msg)
   }
   
   # If one of the items on the diagonal is zero, stop
@@ -968,7 +967,7 @@ GSeidel <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
     msg <- paste0("The matrix of coefficients appears to have\n",
                   "one of the elements on the diagonal equal to\n",
                   "zero. Algorithm cannot proceed.\n")
-    cat(msg)
+    warning(msg)
     return(NULL)
   }
   
@@ -994,7 +993,7 @@ GSeidel <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
       if (Mold < tol) {
         msg <- paste0("Number of cycles needed to converge: 0\n",
                       "The starting value was the solution.\n")
-        cat(msg)
+        message(msg)
         break
       }
     }
@@ -1010,16 +1009,15 @@ GSeidel <- function(A,b,x0=NULL,tol=1e-6,nmax=100000,
         msg <- paste0("The increment is getting larger and larger.\n",
                      "Max value of Delta_X at cycle ",icyc,": ",
                      Mnew,"\n")
-        cat(msg)
+        message(msg)
         return(NULL)
       }
       
       eps <- abs(Mold-Mnew)/Mold
       if (abs(eps-1) < tol) {
         msg <- paste("Number of cycles needed to converge:",icyc,"\n")
-        cat(msg)
-        msg <- paste("Last relative increment:",abs(1-eps),"\n")
-        cat(msg)
+        msg <- paste0(msg,"Last relative increment: ",abs(1-eps),"\n")
+        message(msg)
         break
       }
     }
@@ -1141,11 +1139,10 @@ illcond_sample <- function(A,
   ulim <- norm(Ainv,"F")*norm(A,"F")*norm(Db0,"F")/norm(b0,"F")
   relerr <- norm(Dx0,"F")/norm(x0,"F")
   msg <- paste0("Relative error: ",relerr," < ",ulim,": upper limit.\n")
-  cat(msg)
+  message(msg)
   msg <- paste0("Ratio: ",relerr/ulim,"\n")
-  cat(msg)
+  message(msg)
   
-  #return(list(x=x0,b=b0,Dx=Dx0,Db=Db0))
   return(list(b=b0,Db=Db0))
 }
 

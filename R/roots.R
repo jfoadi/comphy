@@ -99,7 +99,7 @@ roots_bisec <- function(fn,x0=0,lB=NULL,rB=NULL,
   # Check input
   ans <- is.function(fn)
   if (!ans) {
-    msg <- paste0("Argument 'fn' has to be a function.\n")
+    msg <- paste0("Argument 'fn' must be a function.\n")
     warning(msg)
     
     return(NULL)

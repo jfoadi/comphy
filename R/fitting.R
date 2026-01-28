@@ -73,7 +73,7 @@ solveLS <- function(x,intercept=TRUE,tol=NULL) {
   ans <- (is.matrix(x) | is.data.frame(x))
   if (!ans) {
     msg <- "Input has to be either a matrix or a data frame\n"
-    cat(msg)
+    warning(msg)
     return(NULL)
   }
   
@@ -101,7 +101,7 @@ solveLS <- function(x,intercept=TRUE,tol=NULL) {
   if (abs(d) < 1e-6) {
     msg <- paste0("There are infinite solutions to ",
                   "this least squares fitting.\n")
-    cat(msg)
+    warning(msg)
     return(NULL)
   }
   
@@ -114,8 +114,7 @@ solveLS <- function(x,intercept=TRUE,tol=NULL) {
   # Print out the sum of squared residuals:
   eps <- y-A %*% a
   d <- sum(eps^2)
-  msg <- sprintf("Sum of squared residuals: %f\n",d)
-  cat(msg)
+  message(sprintf("Sum of squared residuals: %f", d))
   
   # Reshape for output
   a <- as.vector(a)
@@ -190,7 +189,7 @@ polysolveLS <- function(pts,m,tol=NULL) {
   ans <- (is.matrix(pts) | is.data.frame(pts))
   if (!ans) {
     msg <- "Input has to be either a matrix or a data frame\n"
-    cat(msg)
+    warning(msg)
     return(NULL)
   }
   
@@ -230,7 +229,7 @@ polysolveLS <- function(pts,m,tol=NULL) {
   if (abs(d) < 1e-6) {
     msg <- paste0("There are infinite solutions to ",
                   "this least squares fitting.\n")
-    cat(msg)
+    message(msg)
     return(NULL)
   }
   

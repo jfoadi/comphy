@@ -1,3 +1,9 @@
+# comphy 1.0.5
+
+* Replaced unconditional console output with CRAN-compliant messaging.
+* Added missing documentation entries.
+* Improved bibliographic references in the package description.
+
 # comphy 1.0.4
 
 * Fix Rd math markup for solveLS manual build

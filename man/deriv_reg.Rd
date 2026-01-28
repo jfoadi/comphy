@@ -19,6 +19,10 @@ Must be an exact subset of \code{x}. Approximated values of
 Possible values are "c", "f", "b" for centred, forward and
 backward, respectively.}
 }
+\value{
+A vector of real numbers. These are the numeric approximations to the 
+        first derivative of the function at all values in \code{x0}.
+}
 \description{
 Computes the first derivative of a function at selected points using the 
 forward difference, backward difference, or centred difference. A regularly

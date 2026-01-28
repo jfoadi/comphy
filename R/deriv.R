@@ -193,7 +193,8 @@ backdif <- function(f) {
 #' @param scheme A one-letter character indicating which difference to use. 
 #'               Possible values are "c", "f", "b" for centred, forward and
 #'               backward, respectively.
-#'
+#' @return A vector of real numbers. These are the numeric approximations to the 
+#'         first derivative of the function at all values in \code{x0}.
 #'
 #' @examples
 #' x <- seq(0, 1, length.out = 11)
